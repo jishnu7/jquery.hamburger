@@ -12,6 +12,8 @@ a {
 .title {
     float: left;
     color: #fff;
+    position: relative;
+    top: 1px;
 }
 
 .clear {
