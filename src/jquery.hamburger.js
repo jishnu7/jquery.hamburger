@@ -1,66 +1,53 @@
 /*
  * jquery.hamburger
- * 
  *
  * Copyright (c) 2014 Jishnu Mohan
  * Licensed under the MIT license.
  */
 
 (function ($) {
-  var onClick = function() {
-    var contentWidth = $('#content').width();
-    $('#content').css('width', contentWidth);
-    $('#container').bind('touchmove', function(e){e.preventDefault();});
+  var action = $('.hamburger-action'),
+    hamburger = $('#hamburger'),
+    content = $('#content'),
+    overlay = $('<div>').attr({
+        id: 'hamburger-overlay',
+        class: 'hamburger-action'
+      }).insertAfter(content),
+    nav = $('nav'),
 
-    var current = $("nav").css("margin-left"),
-      val = "0%",
-      layer = "block",
-      opacity = 0.5,
-      ham = -10;
+    onClick = function() {
+      var contentWidth = content.width(),
+        current = nav.css('margin-left'),
+        val = '0%',
+        layer = 'block',
+        opacity = 0.5,
+        ham = -10;
 
-    if(current === "0px") {
-      val = "-70%";
-      layer = "none";
-      opacity = 0;
-      ham = 0;
-    } else {
-      $('#contentLayer').css('display', layer);
-    }
+      content.css('width', contentWidth);
+      if(current === '0px') {
+        val = '-70%';
+        layer = 'none';
+        opacity = 0;
+        ham = 0;
+      } else {
+        overlay.css('display', layer);
+      }
 
-    $("nav").animate({"margin-left": [val]}, {
-        duration: 700
-    });
-
-    $('#hamburger').animate({"left": [ham]}, {
-        duration: 700
-    });
-
-    $("#contentLayer").animate({"opacity": [opacity]}, {
-        duration: 700,
-        complete: function() {
-          $('#contentLayer').css('display', layer);
-        }
-    });
-  };
-
-  $("#hamburger").click(onClick);
-  $(".title").click(onClick);
-
-  //close the menu
-  $("#contentLayer").click(function() {
-      $('#container').unbind('touchmove');
-      $("nav").animate({"margin-left": ["-70%"]}, {
+      nav.animate({'margin-left': [val]}, {
           duration: 700
       });
-      $("#contentLayer").animate({"opacity": [0]}, {
+
+      hamburger.animate({'left': [ham]}, {
+          duration: 700
+      });
+
+      overlay.animate({'opacity': [opacity]}, {
           duration: 700,
           complete: function() {
-            $('#contentLayer').css('display', 'none');
+            overlay.css('display', layer);
           }
       });
-      $('#hamburger').animate({"left": [0]}, {
-          duration: 700
-      });
-  });
+    };
 
+  action.click(onClick);
 }(jQuery));

@@ -4,13 +4,20 @@ body {
     background: #eee;
     overflow-x:hidden;
 }
+
 a {
     text-decoration: none;
 }
+
 .title {
     float: left;
     color: #fff;
 }
+
+.clear {
+    clear: 'both';
+}
+
 #circle {
     margin-top: 20px;
     display: table-cell;
@@ -45,27 +52,6 @@ header {
     box-shadow:  -10px 0px 9px 0px rgba(0, 0, 0, 0.4);
 }
 
-#hamburger {
-    cursor: pointer;
-    display: block;
-    height: 19px;
-    position: relative;
-    width: 20px;
-    float: left;
-    padding-right: 10px;
-}
-
-#hamburger div {
-    background-color: #fff;
-    height: 3px;
-    margin-top: 3px;
-    width: 90%;
-}
-
-.clear {
-    clear: 'both';
-}
-
 nav {
     top: 40px;
     margin-left: -70%;
@@ -92,7 +78,28 @@ nav li a {
     text-decoration: none;
 }
 
-#contentLayer {
+#hamburger {
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    position: relative;
+    width: 20px;
+    float: left;
+    padding-right: 10px;
+}
+
+#hamburger div {
+    background-color: #fff;
+    height: 3px;
+    margin-top: 3px;
+    width: 90%;
+}
+
+.hamburger-action {
+    cursor: pointer;
+}
+
+#hamburger-overlay {
     display: none;
     height: 100%;
     overflow-x: hidden;
@@ -103,4 +110,5 @@ nav li a {
     width: 100%;
     z-index: 1;
     opacity: 0;
+    background: #000;
 }
