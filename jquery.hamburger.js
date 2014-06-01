@@ -5,14 +5,16 @@
  * Licensed under the MIT license.
  */
 
+/* global jQuery */
 (function ($) {
+  'use strict';
+
   var action = $('.hamburger-action'),
     hamburger = $('#hamburger'),
     content = $('#content'),
     overlay = $('<div>').attr({
-        id: 'hamburger-overlay',
-        class: 'hamburger-action'
-      }).insertAfter(content),
+      id: 'hamburger-overlay',
+    }).insertAfter(content),
     nav = $('nav'),
 
     onClick = function() {
@@ -34,20 +36,22 @@
       }
 
       nav.animate({'margin-left': [val]}, {
-          duration: 700
+        duration: 700
       });
 
       hamburger.animate({'left': [ham]}, {
-          duration: 700
+        duration: 700
       });
 
       overlay.animate({'opacity': [opacity]}, {
-          duration: 700,
-          complete: function() {
-            overlay.css('display', layer);
-          }
+        duration: 700,
+        complete: function() {
+          overlay.css('display', layer);
+        }
       });
     };
 
   action.click(onClick);
+  overlay.click(onClick);
+  hamburger.click(onClick);
 }(jQuery));
